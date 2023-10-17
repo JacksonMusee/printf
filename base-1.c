@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 {
 	size_t current_size = sizeof(char);
 	char * buffer = malloc(current_size);
-	int i;
+	int i = 0;
 	ssize_t bytes_written;
 
 	va_list my_args;
@@ -30,14 +30,11 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				int actv_para = va_arg(my_args, int);
-				if (actv_para)
-				{
+				char actv_para = va_arg(my_args, int);
 					buffer = realloc(buffer, current_size + 1);
 					current_size += 1;
 					buffer[i] = actv_para;
 					i++;
-				}
 			
 			}
 			else if (*format == 's')
@@ -63,6 +60,7 @@ int _printf(const char *format, ...)
 				buffer[i] = '%';
 				i++;
 			}
+			format++;
 
 		}
 		if (*format != '%')

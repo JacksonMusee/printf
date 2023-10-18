@@ -40,6 +40,10 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				char *actv_para = va_arg(my_args, char *);
+
+				if (actv_para == NULL)
+					actv_para = "(null)";
+
 				if (actv_para)
 				{
 					while(*actv_para != '\0')

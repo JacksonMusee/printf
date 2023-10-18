@@ -15,8 +15,7 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0;
-	int chars_written;
+	int chars_written = 0;
 
 	va_list my_args;
 	
@@ -57,7 +56,7 @@ int _printf(const char *format, ...)
 			{
 				putchar('%');
 				chars_written += 1;
-				actv_para++;
+				format++;
 			}
 
 		}

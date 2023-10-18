@@ -15,10 +15,8 @@
 
 int _printf(const char *format, ...)
 {
-	size_t current_size = sizeof(char);
-	char * buffer = malloc(current_size);
 	int i = 0;
-	ssize_t bytes_written;
+	int chars_written;
 
 	va_list my_args;
 	
@@ -30,11 +28,14 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
+
 				char actv_para = va_arg(my_args, int);
-					buffer = realloc(buffer, current_size + 1);
-					current_size += 1;
-					buffer[i] = actv_para;
-					i++;
+					if (actv_para)
+					{
+					putchar(actv_para);
+					chars_written += 1;
+					format++;
+					}
 			
 			}
 			else if (*format == 's')
@@ -44,40 +45,30 @@ int _printf(const char *format, ...)
 				{
 					while(*actv_para != '\0')
 					{
-						buffer = realloc(buffer, current_size + 1);
-						current_size += 1;
-						buffer[i] = *actv_para;
+						putchar(*actv_para);
+						chars_written += 1;
 						actv_para++;
-						i++;
 					}
+					format++;
 				}
 				
 			}
 			else if (*format == '%')
 			{
-				buffer = realloc(buffer, current_size + 1);
-				current_size += 1;
-				buffer[i] = '%';
-				i++;
+				putchar('%');
+				chars_written += 1;
+				actv_para++;
 			}
-			format++;
 
 		}
-		if (*format != '%')
+		else
 		{
-		buffer = realloc(buffer, current_size + 1);
-		current_size += 1;
-		buffer[i] = *format;
-		i++;
+		putchar(*format);
+		chars_written += 1;
 		format++;
 		}
 	}
-	buffer[i] = '\0';
 	va_end(my_args);
 
-	bytes_written = write(1, buffer, i);
-
-	free(buffer);
-
-	return (bytes_written);
+	return (chars_written);
 }

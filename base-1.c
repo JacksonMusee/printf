@@ -29,12 +29,9 @@ int _printf(const char *format, ...)
 			{
 
 				char actv_para = va_arg(my_args, int);
-					if (actv_para)
-					{
-					putchar(actv_para);
-					chars_written += 1;
-					format++;
-					}
+				putchar(actv_para);
+				chars_written += 1;
+				format++;
 			
 			}
 			else if (*format == 's')

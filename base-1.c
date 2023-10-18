@@ -18,6 +18,9 @@ int _printf(const char *format, ...)
 	int chars_written = 0;
 
 	va_list my_args;
+
+	if (my_args == NULL)
+		return(0);
 	
 	va_start(my_args, format);
 	while(*format != '\0')

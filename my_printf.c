@@ -16,6 +16,7 @@
 int _printf(const char *format, ...)
 {
 	int chars_written = 0;
+	int new_chars_written;
 	va_list my_args;
 
 	if (format == NULL)
@@ -34,32 +35,13 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				return (-1);
 
-			if (*format == 'c')
-			{
+			new_chars_written = main_helper(format, my_args, chars_written);
 
-				char actv_para = va_arg(my_args, int);
-				putchar(actv_para);
-				chars_written += 1;
-				format++;
-			
-			}
-			else if (*format == 's')
+			if (new_chars_written > chars_written)
 			{
-				chars_written += print_str(my_args);
+				chars_written = new_chars_written;
 				format++;
 			}
-			else if (*format == '%')
-			{
-				putchar('%');
-				chars_written += 1;
-				format++;
-			}
-			else
-			{
-			putchar('%');
-			chars_written += 1;
-			}
-
 		}
 		else
 		{
@@ -73,6 +55,40 @@ int _printf(const char *format, ...)
 	return (chars_written);
 }
 
+/**
+ *main_helper - Obvious
+ *
+ *@format: Pointer to current format symbol
+ *@my_args: List of arguments to be printed
+ *@chars_written: characters printed so far
+ *
+ *Return: Updated chars_written
+ */
+int main_helper(const char *format,va_list my_args, int chars_written)
+{
+
+	if (*format == 'c')
+	{
+		chars_written += print_char(my_args);
+	}
+	else if (*format == 's')
+	{
+		chars_written += print_str(my_args);
+	}
+	else if (*format == '%')
+	{
+		putchar('%');
+		chars_written += 1;
+	}
+	else
+	{
+		putchar('%');
+		putchar(*format);
+		chars_written += 2;
+	}
+
+	return (chars_written);
+}
 /**
  *print_str - Help print a string
  *
@@ -99,6 +115,26 @@ int print_str(va_list my_args)
 			actv_para++;
 		}
 	}
+
+	return (chars_written);
+}
+
+/**
+ *print_char - Help in printing characters
+ *
+ *@my_args: Arguments lst
+ *
+ *Return: Number of characters printed
+ */
+
+int print_char(va_list my_args)
+{
+	int chars_written = 0;
+
+	char actv_para = va_arg(my_args, int);
+
+	putchar(actv_para);
+        chars_written += 1;
 
 	return (chars_written);
 }

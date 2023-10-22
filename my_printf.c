@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	va_list my_args;
 
 	if (format == NULL)
-                return(0);
+                return(-1);
 
 	if (my_args == NULL)
 		return(0);

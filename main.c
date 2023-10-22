@@ -35,5 +35,8 @@ int main(void)
     printf("%");
     _printf("%");
 
+    printf("%!\n");
+    _printf("%!\n");
+
     return (0);
 }

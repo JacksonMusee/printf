@@ -60,13 +60,17 @@ int _printf(const char *format, ...)
 					}
 					format++;
 				}
-				
 			}
 			else if (*format == '%')
 			{
 				putchar('%');
 				chars_written += 1;
 				format++;
+			}
+			else
+			{
+			putchar('%');
+			chars_written += 1;
 			}
 
 		}

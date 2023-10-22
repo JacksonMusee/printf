@@ -45,21 +45,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 's')
 			{
-				char *actv_para = va_arg(my_args, char *);
-
-				if (actv_para == NULL)
-					actv_para = "(null)";
-
-				if (actv_para)
-				{
-					while(*actv_para != '\0')
-					{
-						putchar(*actv_para);
-						chars_written += 1;
-						actv_para++;
-					}
-					format++;
-				}
+				chars_written += print_str(format, my_args);
 			}
 			else if (*format == '%')
 			{
@@ -82,6 +68,38 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(my_args);
+
+	return (chars_written);
+}
+
+/**
+ *print_str - Help print a string
+ *
+ *@format: pointer to current format 
+ *@my_args: Variable of all arguments to be printed
+ *
+ *Return: Number of character printed
+ */
+
+int print_str(const char *format, va_list my_args)
+{
+	int chars_written = 0;
+
+	char *actv_para = va_arg(my_args, char *);
+
+	if (actv_para == NULL)
+		actv_para = "(null)";
+	
+	if (actv_para)
+	{
+		while(*actv_para != '\0')
+		{
+			putchar(*actv_para);
+			chars_written += 1;
+			actv_para++;
+		}
+		format++;
+	}
 
 	return (chars_written);
 }

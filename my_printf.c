@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 's')
 			{
-				chars_written += print_str(format, my_args);
+				chars_written += print_str(my_args);
 				format++;
 			}
 			else if (*format == '%')
@@ -76,13 +76,12 @@ int _printf(const char *format, ...)
 /**
  *print_str - Help print a string
  *
- *@format: pointer to current format 
  *@my_args: Variable of all arguments to be printed
  *
  *Return: Number of character printed
  */
 
-int print_str(const char *format, va_list my_args)
+int print_str(va_list my_args)
 {
 	int chars_written = 0;
 

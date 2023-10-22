@@ -32,5 +32,8 @@ int main(void)
     printf(NULL);
     _printf(NULL);
 
+    printf("%");
+    _printf("%");
+
     return (0);
 }

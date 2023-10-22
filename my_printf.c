@@ -99,7 +99,6 @@ int print_str(const char *format, va_list my_args)
 			chars_written += 1;
 			actv_para++;
 		}
-		format++;
 	}
 
 	return (chars_written);

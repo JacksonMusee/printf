@@ -41,5 +41,10 @@ int main(void)
     printf("%s", "This sentence is retrieved from va_args!\n");
     _printf("%s", "This sentence is retrieved from va_args!\n");
 
+   len = printf("%c%cth %s%s a%cg%s: Y%sou %s no%ching%s Snow.%c", 'W', 'i', "some ", "more", 'r', "s", "", "know", 't', ", Jon", '\n');
+   len2 = _printf("%c%cth %s%s a%cg%s: Y%sou %s no%ching%s Snow.%c", 'W', 'i', "some ", "more", 'r', "s", "", "know", 't', ", Jon", '\n');
+
+   printf("Length:[%d, %d]\n", len, len2);
+
     return (0);
 }

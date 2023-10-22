@@ -40,8 +40,8 @@ int _printf(const char *format, ...)
 			if (new_chars_written > chars_written)
 			{
 				chars_written = new_chars_written;
-				format++;
 			}
+			format++;
 		}
 		else
 		{

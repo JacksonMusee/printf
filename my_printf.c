@@ -16,10 +16,12 @@
 int _printf(const char *format, ...)
 {
 	int chars_written = 0;
-
 	va_list my_args;
 
-	if (my_args == NULL || (my_args == NULL && format == NULL))
+	if (format == NULL)
+                return(0);
+
+	if (my_args == NULL)
 		return(0);
 	
 	va_start(my_args, format);

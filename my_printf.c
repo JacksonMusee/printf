@@ -80,6 +80,15 @@ int main_helper(const char *format, va_list my_args, int chars_written)
 		putchar('%');
 		chars_written += 1;
 	}
+	else if (*format == 'd')
+	{
+		chars_written += print_int(va_arg(my_args, unsigned int));
+	
+	}
+	else if (*format == 'i')
+	{
+		chars_written += print_int(va_arg(my_args, unsigned int));
+	}
 	else
 	{
 		putchar('%');

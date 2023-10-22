@@ -38,5 +38,8 @@ int main(void)
     printf("%!\n");
     _printf("%!\n");
 
+    printf("%s", "This sentence is retrieved from va_args!\n");
+    _printf("%s", "This sentence is retrieved from va_args!\n");
+
     return (0);
 }

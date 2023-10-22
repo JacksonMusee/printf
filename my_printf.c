@@ -46,6 +46,7 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				chars_written += print_str(format, my_args);
+				format++;
 			}
 			else if (*format == '%')
 			{

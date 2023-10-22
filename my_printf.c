@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 
 	va_list my_args;
 
-	if (my_args == NULL)
+	if (my_args == NULL || (my_args == NULL && format == NULL))
 		return(0);
 	
 	va_start(my_args, format);

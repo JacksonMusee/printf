@@ -20,13 +20,13 @@ int _printf(const char *format, ...)
 	va_list my_args;
 
 	if (format == NULL)
-                return(-1);
+		return (-1);
 
 	if (my_args == NULL)
-		return(0);
-	
+		return (0);
+
 	va_start(my_args, format);
-	while(*format != '\0')
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
@@ -64,7 +64,7 @@ int _printf(const char *format, ...)
  *
  *Return: Updated chars_written
  */
-int main_helper(const char *format,va_list my_args, int chars_written)
+int main_helper(const char *format, va_list my_args, int chars_written)
 {
 
 	if (*format == 'c')
@@ -105,10 +105,10 @@ int print_str(va_list my_args)
 
 	if (actv_para == NULL)
 		actv_para = "(null)";
-	
+
 	if (actv_para)
 	{
-		while(*actv_para != '\0')
+		while (*actv_para != '\0')
 		{
 			putchar(*actv_para);
 			chars_written += 1;
@@ -134,7 +134,7 @@ int print_char(va_list my_args)
 	char actv_para = va_arg(my_args, int);
 
 	putchar(actv_para);
-        chars_written += 1;
+	chars_written += 1;
 
 	return (chars_written);
 }
